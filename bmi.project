@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #30dbb6;
+
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        .but {
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            padding: 10px;
+            font-size: 1.1rem;
+
+            width: 100%;
+
+
+        }
+
+        .form {
+            font-size: 1rem;
+        }
+
+        .c {
+            font-size: 1.8rem;
+        }
+
+        .t {
+            border-radius: 10px;
+            padding: 5px;
+
+        }
+
+        .u {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+    <h2>BMI CALCULATOR</h2>
+    </p>
+    <div class="container">
+
+        <form class="form">
+
+            <p>Weight: <input type="text" class="t"></p>
+           <label>Height: <input type="text" class="u">
+</label>
+            
+           <br>
+            <input type="button" class="but" value="Calculate" </form>
+            <p id="result"></p>
+
+    </div>
+
+    <br>
+    <div class="c">
+        <p>
+            <h>MEASUREMENT RANGE</h>
+        </p>
+        <br>
+        <p>Normal Weight:Below 18(Normal Range)</p>
+        <p>Over Weight:Above 18(OverWeight Range)</p>
+
+
+</body>
+<script>
+    const weight = document.querySelector('.t')
+    const height = document.querySelector('.u')
+    const result = document.querySelector('#result')
+    const submit = document.querySelector('.but')
+
+
+    submit.addEventListener('click', function (e) {
+        e.preventDefault();
+        const w = parseInt(weight.value)
+        const h = parseInt(height.value)
+        console.log(w);
+        console.log(h);
+        calculateBMI(w, h);
+
+    });
+
+
+
+
+    function calculateBMI(w, h) {
+        if (w === 0 || w < 0) {
+            result.textContent = 'enter valid weight';  // Show in result instead of alert
+            return;
+        }
+
+        else if (h === 0 || h < 0) {
+            result.textContent = 'enter valid height';  // Show in result instead of alert
+            return;
+        }
+
+        const bmi = w / (h * h);
+        result.textContent = `Your BMI is ${bmi.toFixed(2)}`;
+    }
+
+</script>
+
+</html>
